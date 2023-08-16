@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-(dugx(o4%q9ggl)--(wbbej0z$gikok8h^&*=x%@yi*0$&mr9y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -73,12 +74,20 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+with open('db_account.txt', 'r') as db_account:
+    user = db_account.readline()[:-1]
+    passwd = db_account.readline()
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'todolist',
+            'HOST': 'localhost',
+            'PORT': 5432,
+            'USER': user,
+            'PASSWORD': passwd
+        }
     }
-}
 
 
 # Password validation
