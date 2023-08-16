@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-with open('db_account.txt', 'r') as db_account:
+with open('./todolist/db_account.txt', 'r') as db_account:
     user = db_account.readline()[:-1]
     passwd = db_account.readline()
 
