@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    Sign Up
+    <div class="container-fluid">
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-3">
+                    ID :
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    PW :
+                    {{ form.password1 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    PW Val :
+                    {{ form.password2 }}
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="회원가입">
+            </div>
+        </form>
+    </div>
+{% endblock content %}
